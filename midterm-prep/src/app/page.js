@@ -2,12 +2,10 @@
 import { useState } from "react";
 
 export default function StylesPage() {
-  // State hooks to store bear images and loading status
   const [bearImages, setBearImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [fetchedUrls, setFetchedUrls] = useState(new Set()); // To track previously fetched image URLs
 
-  // Function to fetch bear images without repeating
   async function fetchBearImages() {
     setLoading(true); // Set loading to true when starting the fetch
     
@@ -37,7 +35,7 @@ export default function StylesPage() {
   // Header component with a button to trigger the image fetch
   const Header = () => {
     return (
-      <header className="text-center">
+      <header className="text-center mt-12 sm:mt-16"> {/* Added margin-top for better spacing */}
         <h1 className="text-4xl font-bold mb-4">Want To See Some Cute Bears?</h1>
         <button
           disabled={loading} // Disable the button while loading
@@ -58,13 +56,13 @@ export default function StylesPage() {
 
     if (bearImages.length > 0) {
       return (
-        <section className="flex flex-wrap justify-center">
+        <section className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
           {/* Loop through the bear images array and display each image in a card */}
           {bearImages.map((image, index) => (
-            <div key={index} className="card">
-              <img src={image} alt={`Placeholder bear ${index + 1}`} /> {/* Display the image */}
-              <h2 className="title">Bear {index + 1}</h2> {/* Display bear title */}
-              <p className="description">Pick me as a placeholder!</p> {/* Description for each image */}
+            <div key={index} className="card max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+              <img src={image} alt={`Placeholder bear ${index + 1}`} className="rounded-t-lg w-full h-48 object-cover" /> {/* Display the image */}
+              <h2 className="title text-center font-semibold">Bear {index + 1}</h2> {/* Display bear title */}
+              <p className="description text-center text-sm text-gray-600">Pick me as a placeholder!</p> {/* Description for each image */}
             </div>
           ))}
         </section>
@@ -76,7 +74,7 @@ export default function StylesPage() {
   };
 
   return (
-    <div className="m-8">
+    <div className="m-8 app-container"> {/* Ensure content is inside app-container */}
       <Header /> {/* Render the Header component */}
       <PictureDisplay /> {/* Render the PictureDisplay component */}
     </div>

@@ -96,3 +96,41 @@ button:disabled {
 button:hover {
   background-color: #357C5B; /* Darken the button color on hover */
 }
+
+/* Ensure the page takes full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply space at the top of the page */
+body {
+  padding-top: 4rem; /* Adjust the padding to prevent clipping */
+}
+
+/* Flexbox layout to make sure content is centered and spaced correctly */
+#root, .app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ensure items start from the top */
+  height: 100%;
+  padding: 0 1rem; /* Optional: add some horizontal padding */
+}
+
+/* Additional mobile-first styling */
+@media (max-width: 640px) {
+  /* Ensuring header is spaced well for mobile */
+  .app-container {
+    padding-top: 4rem; /* Adjust this value if needed */
+  }
+
+  header h1 {
+    font-size: 2rem; /* Make header a bit smaller on mobile */
+  }
+
+  header button {
+    padding: 12px 16px; /* Make button larger on mobile */
+  }
+}
